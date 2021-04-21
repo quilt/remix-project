@@ -155,6 +155,7 @@ function runTests (browser: NightwatchBrowser) {
     .clickLaunchIcon('fileExplorers')
     .clickLaunchIcon('solidityUnitTesting')
     .pause(500)
+    .clearValue('*[data-id="uiPathInput"]')
     .setValue('*[data-id="uiPathInput"]', 'tests')
     .pause(2000)
     .scrollAndClick('#runTestsTabRunAction')
