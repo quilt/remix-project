@@ -205,7 +205,9 @@ async function run () {
   var self = this
 
   // check the origin and warn message
-  if (window.location.hostname === 'yann300.github.io') {
+  if (window.location.hostname === 'remix.puxi.quilt.link') {
+    modalDialogCustom.alert('Welcome to the EIP-3074 Remix instance. Please note that you have to be connected to a local EIP-3074 (e.g. Puxi testnet) node to use the new AUTH and AUTHCALL opcodes.')
+  } else if (window.location.hostname === 'yann300.github.io') {
     modalDialogCustom.alert('This UNSTABLE ALPHA branch of Remix has been moved to http://ethereum.github.io/remix-live-alpha.')
   } else if (window.location.hostname === 'remix-alpha.ethereum.org' ||
   (window.location.hostname === 'ethereum.github.io' && window.location.pathname.indexOf('/remix-live-alpha') === 0)) {
