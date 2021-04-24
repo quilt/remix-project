@@ -169,6 +169,7 @@ class CompilerContainer {
 
   _retrieveVersion (version) {
     if (!version) version = this._view.versionSelector.value
+    if (version === 'builtin') version = '0.8.2'
     return semver.coerce(version) ? semver.coerce(version).version : ''
   }
 
@@ -489,7 +490,7 @@ class CompilerContainer {
     // Workers cannot load js on "file:"-URLs and we get a
     // "Uncaught RangeError: Maximum call stack size exceeded" error on Chromium,
     // resort to non-worker version in that case.
-    if (this.data.selectedVersion !== 'builtin' && canUseWorker(this.data.selectedVersion)) {
+    if (this.data.selectedVersion === 'builtin' || canUseWorker(this.data.selectedVersion)) {
       this.compileTabLogic.compiler.loadVersion(true, url)
       this.setVersionText('(loading using worker)')
     } else {
@@ -516,7 +517,7 @@ class CompilerContainer {
   // fetching both normal and wasm builds and creating a [version, baseUrl] map
   async fetchAllVersion (callback) {
     let selectedVersion, allVersionsWasm, isURL
-    let allVersions = [{ path: 'builtin', longVersion: 'latest local version - 0.7.4' }]
+    let allVersions = [{ path: 'builtin', longVersion: 'special EIP-3074 version - 0.8.2' }]
     // fetch normal builds
     const binRes = await promisedMiniXhr(`${baseURLBin}/list.json`)
     // fetch wasm builds
