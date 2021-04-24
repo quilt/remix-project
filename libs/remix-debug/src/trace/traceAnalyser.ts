@@ -68,6 +68,9 @@ export class TraceAnalyser {
       if (callStep.op === 'DELEGATECALL') {
         offset = 2 * parseInt(stack[stack.length - 3], 16)
         size = 2 * parseInt(stack[stack.length - 4], 16)
+      } else if (callStep.op === 'AUTHCALL') {
+        offset = 2 * parseInt(stack[stack.length - 5], 16)
+        size = 2 * parseInt(stack[stack.length - 6], 16)
       } else {
         offset = 2 * parseInt(stack[stack.length - 4], 16)
         size = 2 * parseInt(stack[stack.length - 5], 16)

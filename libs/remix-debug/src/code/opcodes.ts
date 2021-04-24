@@ -160,6 +160,8 @@ export default function (op, full) {
     0xf3: ['RETURN', 0, 2, 0, false],
     0xf4: ['DELEGATECALL', 700, 6, 1, true, true],
     0xf5: ['CREATE2', 32000, 4, 1, true, true],
+    0xf6: ['AUTH', 700, 4, 1, true],
+    0xf7: ['AUTHCALL', 700, 8, 1, true, true],
     0xfa: ['STATICCALL', 700, 6, 1, true, true],
     0xfd: ['REVERT', 0, 2, 0, false],
 
