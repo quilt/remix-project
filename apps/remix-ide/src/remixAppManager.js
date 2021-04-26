@@ -101,6 +101,18 @@ export class RemixAppManager extends PluginManager {
     try {
       const res = await fetch(this.pluginsDirectory)
       plugins = await res.json()
+      plugins.push({
+        "name": "eip3074Signer",
+        "displayName": "EIP-3074 Signer",
+        "events": [],
+        "methods": [],
+        "version": "1.0.0",
+        "url": "https://remix.puxi.quilt.link/eip3074-signer-plugin/",
+        "description": "Minimal EIP-3074 signer",
+        "documentation": "https://github.com/quilt/remix-eip3074-signer-plugin",
+        "icon": "https://remix.puxi.quilt.link/eip3074-signer-plugin/logo.svg",
+        "location": "sidePanel"
+      })
       localStorage.setItem('plugins-directory', JSON.stringify(plugins))
     } catch (e) {
       console.log('getting plugins list from localstorage...')
